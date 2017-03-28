@@ -1,0 +1,25 @@
+## Dependencies
+Fabric==1.13.1
+python-dateutil==2.6.0
+
+## Nested Dependencies
+#appdirs==1.4.3
+#asn1crypto==0.22.0
+#cffi==1.10.0
+#cryptography==1.8.1
+#enum34==1.1.6
+#idna==2.5
+#ipaddress==1.0.18
+#packaging==16.8
+#paramiko==2.1.2
+#pyasn1==0.2.3
+#pycparser==2.17
+#pyparsing==2.2.0
+
+## Virtualenv
+#pip==9.0.1
+#Python==2.7.12
+#setuptools==34.3.3
+#six==1.10.0
+#wheel==0.30.0a0
+#wsgiref==0.1.2
