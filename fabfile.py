@@ -17,14 +17,15 @@ Fabric command definitions for Archipelago management.
 ## Imports
 ##########################################################################
 
-from fabric.api import env, run, parallel
+from os import path
+from fabric.api import env, run, cd, parallel, settings
 
 
 ##########################################################################
 ## Environment
 ##########################################################################
 
-# Load hosts from a private hosts file 
+# Load hosts from a private hosts file
 with open('hosts.txt', 'r') as hosts:
     env.hosts = [
         "bengfort@{}".format(host.strip())
@@ -32,9 +33,39 @@ with open('hosts.txt', 'r') as hosts:
         if host.strip != ""
     ]
 
+env.forward_agent = True
+
+# Project repository
+repository = "git@github.com:bbengfort/hierarchical-consensus.git"
+
+# Important paths on remote machines
+workspace = "/home/bengfort/workspace/go/src/github.com/bbengfort/"
+project = path.join(workspace, "hierarchical-consensus")
+profile = path.join(project, '.alia_profile')
+entries = "/data/alia/entries.log"
+
+
 ##########################################################################
 ## Commands
 ##########################################################################
+
+def deploy():
+    """
+    Pull the most recent version of the repository and source the profile
+    """
+    with cd(project):
+        run("git pull")
+        run("godep restore")
+        run(". {}".format(profile))
+
+
+def serve():
+    """
+    Run the alia consensus group replica servers
+    """
+    with cd(project):
+        run("echo $GOPATH")
+
 
 def hostname():
     """
