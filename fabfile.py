@@ -28,9 +28,9 @@ from fabric.api import env, run, cd, parallel, settings, put, sudo
 # Load hosts from a private hosts file
 with open('hosts.txt', 'r') as hosts:
     env.hosts = [
-        host.strip()
+        host.strip().split()[0]
         for host in hosts
-        if host.strip() != ""
+        if host.strip() != "" and not host.startswith("#")
     ]
 
 env.user = "bengfort"

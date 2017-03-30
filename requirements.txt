@@ -1,8 +1,13 @@
 ## Dependencies
 Fabric==1.13.1
 python-dateutil==2.6.0
+python-dotenv==0.6.3
+requests==2.13.0
+beautifulsoup4==4.5.3
+lxml==3.7.3
 
 ## Nested Dependencies
+#click==6.7
 #appdirs==1.4.3
 #asn1crypto==0.22.0
 #cffi==1.10.0
