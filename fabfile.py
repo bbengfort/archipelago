@@ -17,7 +17,8 @@ Fabric command definitions for Archipelago management.
 ## Imports
 ##########################################################################
 
-from os import path
+from os import path, environ
+from dotenv import load_dotenv, find_dotenv
 from fabric.api import env, run, cd, parallel, settings, put, sudo
 
 
@@ -25,19 +26,20 @@ from fabric.api import env, run, cd, parallel, settings, put, sudo
 ## Environment
 ##########################################################################
 
+# Load the dotenv file
+load_dotenv(find_dotenv())
+
+HOSTS = environ.get("FAB_HOST_FILE", 'hosts.txt')
+
 # Load hosts from a private hosts file
-with open('hosts.txt', 'r') as hosts:
+with open(HOSTS, 'r') as hosts:
     env.hosts = [
         host.strip().split()[0]
         for host in hosts
         if host.strip() != "" and not host.startswith("#")
     ]
 
-env.user = "bengfort"
 env.forward_agent = True
-
-# Project repository
-repository = "git@github.com:bbengfort/hierarchical-consensus.git"
 
 # Important paths on remote machines
 workspace = "/home/bengfort/workspace/go/src/github.com/bbengfort/"
