@@ -40,6 +40,7 @@ load_dotenv(find_dotenv())
 # Fetch environment variables
 USERNAME = os.environ.get("RHEV_USERNAME", "")
 PASSWORD = os.environ.get("RHEV_PASSWORD", "")
+HOSTS    = os.environ.get("FAB_HOST_FILE", "fixtures/hosts.txt")
 
 RHEVURL  = "https://rhevmgr.cs.umd.edu/api/vms/"
 
@@ -194,7 +195,7 @@ if __name__ == '__main__':
     parent_args = {
         ('-H', '--hosts'): {
             "metavar": "PATH",
-            "type": argparse.FileType('r'), "default": "hosts.txt",
+            "type": argparse.FileType('r'), "default": HOSTS,
             "help": "specify the hosts file with nodes and IDs",
         },
         ('-U', '--user'): {

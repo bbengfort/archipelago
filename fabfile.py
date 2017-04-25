@@ -42,7 +42,7 @@ with open(HOSTS, 'r') as hosts:
 env.forward_agent = True
 
 # Important paths on remote machines
-workspace = "/home/bengfort/workspace/go/src/github.com/bbengfort/"
+workspace = "$HOME/workspace/go/src/github.com/bbengfort/"
 project = path.join(workspace, "hierarchical-consensus")
 profile = path.join(project, '.alia_profile')
 entries = "/data/alia/entries.log"
